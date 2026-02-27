@@ -1,0 +1,37 @@
+# ===== LaTeX 기본 산출물 =====
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# ===== PDF 결과물 (선택) =====
+*.pdf
+
+# ===== minted 관련 =====
+_minted-*
+*.pyg
+*.listing
+
+# ===== latexindent / temp =====
+*.bak
+*.tmp
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== VSCode =====
+.vscode/
+
+# ===== MiKTeX logs =====
+*.aex

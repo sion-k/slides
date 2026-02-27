@@ -1,0 +1,99 @@
+\ProvidesPackage{minimalbeamer}
+
+% packages
+\RequirePackage{kotex}
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\RequirePackage{amsmath}
+\RequirePackage{tikz}
+\RequirePackage{minted}
+\RequirePackage{fvextra}
+
+\usetikzlibrary{positioning}
+
+% fonts
+\setmainfont{Inter}[
+  Path=../fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-BoldItalic
+]
+
+\setsansfont{Inter}[
+  Path=../fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-BoldItalic
+]
+
+\setmonofont{DMMono}[
+  Path=../fonts/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Medium,
+  ItalicFont=*-Italic,
+  BoldItalicFont=*-MediumItalic
+]
+
+\setmainhangulfont{NotoSansCJKkr}[
+  Path=../fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold
+]
+
+\setsanshangulfont{NotoSansCJKkr}[
+  Path=../fonts/,
+  Extension=.otf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold
+]
+
+% minted config
+\setminted{
+    fontsize=\tiny,
+    linenos,
+    numbersep=8pt,
+    xleftmargin=15pt,
+    breaklines=true
+}
+
+\setbeamertemplate{frametitle continuation}{%
+  \space\insertcontinuationcount
+}
+
+% theme
+\mode<presentation>{
+
+\usetheme{default}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{footline}{
+    \hfill
+    \insertframenumber{} / \inserttotalframenumber
+    \hspace{8mm}
+    \vspace{3mm}
+}
+
+\setbeamertemplate{frametitle}{
+    \vspace{2mm}
+    \large\bfseries\insertframetitle
+    \vspace{2mm}
+}
+
+\setbeamertemplate{itemize item}{\color{black}•}
+
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{normal text}{fg=black,bg=white}
+}
+
+\newcommand{\prob}{}
+\newcommand{\setproblem}[1]{\renewcommand{\prob}{#1}}
