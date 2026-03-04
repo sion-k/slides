@@ -32,3 +32,5 @@ Thumbs.db
 
 # ===== MiKTeX logs =====
 *.aex
+
+*.class
