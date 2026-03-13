@@ -1,0 +1,143 @@
+\documentclass{beamer}
+
+\usepackage{../minimalbeamer}
+
+\setbeamertemplate{footline}{
+    \hspace{5mm}
+    \hfill
+    \insertframenumber{} / \inserttotalframenumber
+    \hspace{8mm}
+    \vspace{3mm}
+}
+
+\title{온라인 마트}
+\author{}
+\date{\number\year년 \number\month월 \number\day일}
+
+\newcommand{\koreandate}{%
+  \number\year년 \number\month월 \number\day일%
+}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{온라인마트}
+
+\footnotesize
+
+상품을 판매하는 온라인 마트가 있다. 상품은 ID로 구별되고 품목, 제조사, 가격 정보를 가지고 있다. 품목과 제조사는 1부터 5까지의 정수로 주어진다.
+
+온라인 마트에서 상품을 판매할 수 있고 상품의 판매를 종료할 수 있다. 또한, 같은 품목과 제조사를 가진 상품들에 대해서 가격을 특정 금액만큼 할인할 수 있다.
+
+예로 품목이 1이고 제조사가 2인 상품에서 대해서 5만큼 할인한다면 품목이 1이고 제조사가 2인 모든 상품의 가격이 5만큼 감소한다.
+
+만약, 할인되어 가격이 0 또는 음수가 된 상품은 더 이상 판매가 의미 없는 상품이 되어 판매가 종료된다.
+
+또한, 사용자에게 특정 조건을 만족하는 상품들에 대해서 가격이 낮은 순서로 최대 5개 상품을 검색하여 보여준다.
+
+조건은 전체 상품, 특정 품목, 특정 제조사로 3가지 방식으로 줄 수 있다. 가격이 같은 경우 상품 ID가 더 낮은 것이 우선이다.
+
+\end{frame}
+
+\begin{frame}{\texttt{sell(mID, mCategory, mCompany, mPrice)}}
+\textbf{상품 판매 시작}
+
+\begin{itemize}
+    \item ID가 $1 \le \text{mID} \le 10^9$인 상품 판매를 시작한다.
+    \item 품목: $1 \le \text{mCategory} \le 5$
+    \item 제조사: $1 \le \text{mCompany} \le 5$
+    \item 가격: $1 \le \text{mPrice} \le 1\ 000\ 000$
+    \item 동일한 \texttt{(mCategory, mCompany)}를 가진 판매 중 상품 개수를 반환한다.
+    \item \texttt{mID}는 이전에 사용된 적 없는 값이 보장된다.
+    \item 호출 횟수 최대 50,000회   
+\end{itemize}
+\end{frame}
+
+\begin{frame}{closeSale(mID)}
+\textbf{상품 판매 종료}
+
+\begin{itemize}
+    \item ID가 \texttt{mID}인 상품의 판매를 종료한다.
+    \item 판매 종료 시 해당 상품의 가격을 반환한다.
+    \item 다음 경우 \texttt{-1} 반환:
+    \begin{itemize}
+        \item 존재하지 않는 상품
+        \item 이미 판매 종료된 상품
+    \end{itemize}
+    \item 호출 횟수 최대 5,000회
+\end{itemize}
+\end{frame}
+
+\begin{frame}{discount(mCategory, mCompany, mAmount)}
+\textbf{상품 할인}
+
+\begin{itemize}
+    \item 품목이 \texttt{mCategory}이고 제조사가 \texttt{mCompany}인 모든 상품 가격을 $1 \le \text{mAmount} \le 1\ 000\ 000$ 만큼 감소시킨다.
+    \item 할인 후 가격이 0 이하가 되면 해당 상품은 판매 종료된다.
+    \item 할인 후 동일한 \texttt{(mCategory, mCompany)}를 가진 판매 중 상품 개수를 반환한다.
+    \item 호출 횟수 최대 10,000회
+\end{itemize}
+\end{frame}
+
+\begin{frame}{show(mHow, mCode)}
+\textbf{상품 조회}
+
+\begin{itemize}
+    \item 조건을 만족하는 판매 중 상품 중 가격이 낮은 순으로 최대 5개 조회. 가격이 같으면 ID가 작은 상품이 우선
+    \item \texttt{mHow = 0}: 전체 상품 조회
+    \item \texttt{mHow = 1}: 품목이 \texttt{mCode}인 상품 조회
+    \item \texttt{mHow = 2}: 제조사가 \texttt{mCode}인 상품 조회
+    \item 결과:
+    \item 반환 개수 → \texttt{RESULT.cnt}
+    \item i번째 상품 ID → \texttt{RESULT.IDs[i-1]}
+    \item 조건 만족 상품이 없으면 \texttt{RESULT.cnt = 0}
+    \item 호출 횟수 최대 1,000회
+\end{itemize}
+\end{frame}
+
+\begin{frame}{관찰}
+\begin{itemize}
+    \item \texttt{sell()}을 50,000번 호출한 후에 \texttt{distcount()}를 10,000번 호출하는 경우가 존재하므로 단순 구현을 불가능합니다.
+    \item (\texttt{mCategory}, \texttt{mCompany}) 범위가 작습니다.
+    \item (\texttt{mCategory}, \texttt{mCompany}) 단위로만 업데이트가 일어납니다.
+    \item \texttt{distcount()}는 언제나 가격을 낮추는 방향으로 업데이트가 일어납니다.
+    \item \texttt{show()}는 같은 기준으로 가격이 낮은 순으로 최대 5개 상품을 반환합니다.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{풀이}
+\begin{itemize}
+    \item (\texttt{mCategory}, \texttt{mCompany}) 단위로 상품을 저장하고, 별도로 누적된 할인 금액을 저장합니다.
+    \item 그런데, 가격이 0이하가 된 상품을 제거해야 하므로 최솟값을 빠르게 찾는 자료구조를 사용합니다.
+    \item 새로 상품을 추가할때마다 기존 누적 할인 금액에 영향을 받지 않도록 상품의 가격에 할인 금액을 더해서 저장합니다.
+    \item 임의의 상품을 제거해야하는 경우가 있기 때문에 최솟값을 빠르게 찾으면서 원소 제거가 가능한 treeset을 사용합니다.
+    \item treeset 오버헤드로 인해 시간 초과가 발생하는 경우, 힙과 lazy deletion을 사용해서 뽑을때마다 이미 삭제된 원소인지 확인합니다.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김시온 소스 코드}
+\inputminted{cpp}{../src/온라인마트/김시온/solution.cpp}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김지훈 소스 코드}
+\inputminted{java}{../src/온라인마트/김지훈/UserSolution.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{서민종 소스 코드}
+\inputminted{java}{../src/온라인마트/서민종/UserSolution.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{원찬혁 소스 코드}
+\inputminted{java}{../src/온라인마트/원찬혁/UserSolution.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{정의찬1 소스 코드}
+\inputminted{java}{../src/온라인마트/정의찬/온라인마트v1.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{정의찬2 소스 코드}
+\inputminted{java}{../src/온라인마트/정의찬/온라인마트v2.java}
+\end{frame}
+
+\end{document}
+
