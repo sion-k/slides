@@ -1,0 +1,81 @@
+\setproblem{22971}
+
+\begin{frame}[label=p1]{증가하는 부분 수열의 개수(\prob)}
+\small
+
+\begin{block}{문제}
+길이가 $N$($1 \le N \le 5\,000$)인 수열 $A$가 주어진다. 수열의 $i$번째 원소 $A_i$($1 \le A_i \le 5\,000$)로 끝나는 증가하는 부분 수열의 개수를 출력하는 프로그램을 작성하자.
+
+단, 수가 너무 커질 수 있으니 $998\,244\,353$으로 나눈 나머지를 출력한다. \\
+
+부분 수열이란 주어진 수열에서 1개 이상의 원소를 골라 원래 순서대로 나열하여 얻은 수열을 말한다. \\
+
+증가하는 부분 수열이란 맨 처음 원소를 제외한 모든 원소가 바로 전 원소보다 큰 수열을 말한다. 다시 말해 길이가 $N$인 부분 수열 $A$가 있을 때, $A_{i-1} < A_i$ ($2 \le i \le N$) 를 만족하면 $A$는 증가하는 부분 수열이다. \\
+
+길이가 $1$인 부분 수열은 항상 증가하는 부분 수열임에 주의하자.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{예제 입력/출력 1}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{입력}
+\begin{verbatim}
+5
+1 2 3 4 5
+\end{verbatim}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{출력}
+\begin{verbatim}
+1 2 4 8 16
+\end{verbatim}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{예제 입력/출력 3}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{입력}
+\begin{verbatim}
+5
+1 2 2 4 3
+\end{verbatim}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{출력}
+\begin{verbatim}
+1 2 2 6 6
+\end{verbatim}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김시온 소스 코드}
+\inputminted{java}{../src/\prob/sion/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{원찬혁 소스 코드}
+\inputminted{java}{../src/\prob/chanhyeok/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{손현준 소스 코드}
+\inputminted{java}{../src/\prob/hyunjoon/P22971.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김지훈 소스 코드}
+\inputminted{java}{../src/\prob/jihoon/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김준형 소스 코드}
+\inputminted{java}{../src/\prob/joonhyeong/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{서민종 소스 코드}
+\inputminted{java}{../src/\prob/minjong/Main.java}
+\end{frame}

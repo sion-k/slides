@@ -1,0 +1,49 @@
+﻿\setproblem{32198}
+
+\begin{frame}[label=p4]{사건은 다가와 (Easy)(\prob)}
+\small
+
+\begin{block}{문제}
+민정이는 현재 수직선의 원점, 즉 위치 $0$에 있다. 민정이는 매 시점 수직선 위에서 왼쪽 또는 오른쪽으로 초당 $1$의 속도로 이동할 수 있고, 정지해 있을 수도 있다.
+
+민정이는 앞으로 사건이 $N$($1 \le N \le 100$)번 발생할 것을 알고 있다. 각 사건은 정수 시각 $T$($1 \le T \le 1\,000$)에 발생하며, 그때 민정이가 위치 $A$와 위치 $B$($-1\,000 \le A < B \le 1\,000$)에 대해 열린 구간 $(A, B)$ 안에 있으면 카리나의 body bang을 맞게 된다. 위치 $A$와 위치 $B$는 안전하다는 점에 유의하라. \\
+
+각 사건의 $T$는 모두 다르다.
+
+민정이는 카리나의 body bang을 맞지 않기 위해 적절히 움직이려 한다. 민정이가 body bang을 피할 수 있는지 판별하고, 피할 수 있다면 이동 거리의 최솟값을 구하여라.
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{예제 입력/출력 1}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{입력}
+\begin{verbatim}
+3
+10 -3 7
+20 -8 2
+25 3 9
+\end{verbatim}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{출력}
+\begin{verbatim}
+8
+\end{verbatim}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{김시온 소스 코드}
+\inputminted{java}{../src/\prob/sion/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{원찬혁 소스 코드}
+\inputminted{java}{../src/\prob/chanhyeok/Main.java}
+\end{frame}
+
+\begin{frame}[fragile, allowframebreaks]{손현준 소스 코드}
+\inputminted{java}{../src/\prob/hyunjoon/P32198.java}
+\end{frame}
