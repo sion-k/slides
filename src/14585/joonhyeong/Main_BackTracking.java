@@ -1,7 +1,9 @@
+package algo_test;
+
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main_BackTracking {
 	static class Cord{
 		int y;
 		int x;
